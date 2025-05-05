@@ -1,0 +1,3193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Portafolio oficial de la Orquesta Experimental de Instrumentos Nativos (OEIN) - Música tradicional andina y contemporánea">
+  <meta name="keywords" content="OEIN, música boliviana, instrumentos nativos, música andina, orquesta experimental">
+  <meta name="author" content="Orquesta Experimental de Instrumentos Nativos">
+  <title>Portafolio OEIN | Música tradicional andina y contemporánea</title>
+  
+  <!-- Preload de recursos críticos -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@400;700&display=swap" as="style">
+  <link rel="preload" href="assets/hero-portada.webp" as="image">
+  <link rel="preload" href="assets/oein-logo.webp" as="image">
+  
+  <!-- Precarga de imágenes importantes -->
+  <link rel="preload" href="assets/pasarela-nosotros.webp" as="image">
+  <link rel="preload" href="assets/pasarela-trabajo.webp" as="image">
+  <link rel="preload" href="assets/pasarela-grabaciones.webp" as="image">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome con carga asíncrona -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"></noscript>
+  
+  <style>
+    /* Variables CSS */
+    :root {
+      --primary-color: #e63946;
+      --primary-dark: #c1121f;
+      --text-color: #333;
+      --light-text: #fff;
+      --shadow: 0 2px 5px rgba(0,0,0,0.2);
+      --shadow-hover: 0 4px 8px rgba(0,0,0,0.3);
+      --transition: all 0.3s ease;
+      --border-radius: 4px;
+      --border-radius-lg: 12px;
+    }
+    
+    /* Reset mejorado */
+    *, *::before, *::after { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+    
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Mejor estructura semántica */
+    header, section, footer {
+      display: block;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* Download Button - Fixed at top right */
+    .fixed-buttons {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 1000;
+    }
+    
+    .download-btn {
+      padding: 0.5rem 1rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: var(--shadow);
+    }
+    
+    .download-btn:hover,
+    .download-btn:focus {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+      outline: none;
+    }
+
+    /* Hero Section */
+
+.residency-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  margin: 0 auto;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.residency-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.residency-item:hover img {
+  transform: scale(1.03);
+}
+
+.residency-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.residency-item:hover .residency-overlay,
+.residency-item:focus-within .residency-overlay {
+  opacity: 1;
+}
+
+.residency-overlay .title {
+  color: #fff;
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  text-align: center;
+  margin: auto 0;
+}
+
+.residency-overlay button {
+  background: transparent;
+  color: #cf1518;
+  border: 2px solid #cf1518;
+  border-radius: 4px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.residency-overlay button:hover,
+.residency-overlay button:focus {
+  background: #cf1518;
+  color: #fff;
+  outline: none;
+}
+
+.links-btn { align-self: flex-start; }
+.residency-info-btn { align-self: flex-end; }
+
+/* Galería Vertical dentro de los acordeones */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin: 2.5rem 0;
+  padding-bottom: 2.5rem;
+}
+
+.gallery-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  margin: 0 auto;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img { transform: scale(1.03); }
+
+.item-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .item-overlay,
+.gallery-item:focus-within .item-overlay { opacity: 1; }
+
+.item-overlay .title {
+  color: #fff;
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  text-align: center;
+  margin: auto 0;
+}
+
+.item-overlay button {
+  background: transparent;
+  color: #cf1518;
+  border: 2px solid #cf1518;
+  border-radius: 4px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.item-overlay button:hover,
+.item-overlay button:focus { background: #cf1518; color: #fff; outline: none; }
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('assets/hero-portada.webp') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Mostrar subtítulo y botones solo en web */
+.hero .subtitle,
+.hero .buttons { display: block; }
+
+/* Ocultar en móvil y centrar logo */
+@media (max-width: 768px) {
+  .hero .subtitle,
+  .hero .buttons { display: none !important; }
+  .hero-content { justify-content: center !important; align-items: center; }
+}
+
+.hero-content {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  gap: 0.5rem;
+  z-index: 1;
+}
+
+.hero-content .logo {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+
+.subtitle {
+  margin: 0;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  font-size: clamp(1.75rem, 6vw, 3rem);
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background: transparent;
+  color: #cf1518;
+  border: 2px solid #cf1518;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover,
+.btn:focus { background: #cf1518; color: #fff; outline: none; }
+
+/* Galería Vertical dentro de los acordeones */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin: 3rem 0;
+  padding-bottom: 3rem;
+}
+
+.gallery-item {
+  position: relative;
+  width: 100%;
+  /* Mantiene proporción 16:9 */
+  aspect-ratio: 16/9;
+  margin: 0 auto;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.03);
+}
+
+.item-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  background: rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover .item-overlay,
+.gallery-item:focus-within .item-overlay {
+  opacity: 1;
+}
+
+.item-overlay .title {
+  color: var(--light-text);
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  text-align: center;
+  margin: auto 0;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+.item-overlay button {
+  background: rgba(230,57,70,0.9);
+  color: var(--light-text);
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.item-overlay button:hover,
+.item-overlay button:focus {
+  background: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  outline: none;
+}
+
+.media-btn {
+  align-self: flex-start;
+}
+
+.info-btn {
+  align-self: flex-end;
+}
+
+/* Hero Section */
+
+.residency-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  margin: 0 auto;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.residency-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.residency-item:hover img {
+  transform: scale(1.03);
+}
+
+.residency-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.residency-item:hover .residency-overlay,
+.residency-item:focus-within .residency-overlay {
+  opacity: 1;
+}
+
+.residency-overlay .title {
+  color: #fff;
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  text-align: center;
+  margin: auto 0;
+}
+
+.residency-overlay button {
+  background: transparent;
+  color: #cf1518;
+  border: 2px solid #cf1518;
+  border-radius: 4px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.residency-overlay button:hover,
+.residency-overlay button:focus {
+  background: #cf1518;
+  color: #fff;
+  outline: none;
+}
+
+.links-btn { align-self: flex-start; }
+.residency-info-btn { align-self: flex-end; }
+
+/* Galería Vertical dentro de los acordeones */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin: 2.5rem 0;
+  padding-bottom: 2.5rem;
+}
+
+.gallery-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  margin: 0 auto;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.03);
+}
+
+.item-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .item-overlay,
+.gallery-item:focus-within .item-overlay {
+  opacity: 1;
+}
+
+.item-overlay .title {
+  color: #fff;
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  text-align: center;
+  margin: auto 0;
+}
+
+.item-overlay button {
+  background: transparent;
+  color: #cf1518;
+  border: 2px solid #cf1518;
+  border-radius: 4px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.item-overlay button:hover,
+.item-overlay button:focus {
+  background: #cf1518;
+  color: #fff;
+  outline: none;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('assets/hero-portada.webp') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+}
+
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;            /* espacio uniforme */
+  padding: 4rem 2rem 3rem; /* más espacio superior */
+  z-index: 1;
+}
+
+.hero-content .logo {
+  margin: 0;            /* elimino margin-top */
+  max-width: 600px;     /* logo más grande */
+  width: 100%;
+  height: auto;
+}
+
+.subtitle {
+  margin: 0;            /* eliminamos espacios extra */
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  font-size: clamp(1.75rem, 6vw, 3rem);
+  text-align: center;
+  position: static;     /* volver a flujo normal */
+  transform: none;
+}
+
+.buttons {
+  margin-top: auto;     /* empuja botones al pie */
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background: transparent;
+  color: #cf1518;
+  border: 2px solid #cf1518;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  background: #cf1518;
+  color: #fff;
+  outline: none;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-content .logo {
+    max-width: 500px;
+  }
+  .subtitle {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+  .buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Galería Vertical dentro de los acordeones */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin: 2.5rem 0;
+  padding-bottom: 2.5rem;
+}
+
+.gallery-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  margin: 0 auto;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.03);
+}
+
+.item-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .item-overlay,
+.gallery-item:focus-within .item-overlay {
+  opacity: 1;
+}
+
+.item-overlay .title {
+  color: #fff;
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  text-align: center;
+  margin: auto 0;
+}
+
+.item-overlay button {
+  background: transparent;
+  color: #cf1518;
+  border: 2px solid #cf1518;
+  border-radius: 4px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.item-overlay button:hover,
+.item-overlay button:focus {
+  background: #cf1518;
+  color: #fff;
+  outline: none;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('assets/hero-portada.webp') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+}
+
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem 3rem;
+  z-index: 1;
+}
+
+.hero-content .logo {
+  display: block;
+  margin-top: 2rem;
+  max-width: 450px;
+  width: 90%;
+  height: auto;
+}
+
+.subtitle {
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+.buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background: transparent;
+  color: #cf1518;
+  border: 2px solid #cf1518;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  background: #cf1518;
+  color: #fff;
+  outline: none;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-content .logo {
+    max-width: 350px;
+    margin-top: 1rem;
+  }
+  .buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+
+    /* Pasarela Visual - Acordeones Mejorados */
+    .pasarela-container {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .pasarela-item {
+      margin-bottom: 1rem;
+      position: relative;
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .pasarela-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0,0,0,0.3);
+      cursor: pointer;
+      z-index: 2;
+      transition: var(--transition);
+      touch-action: manipulation;
+    }
+
+    .pasarela-header h2 {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(1.8rem, 6vw, 3rem);
+      color: var(--light-text);
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+      opacity: 0.9;
+    }
+
+    .pasarela-imagen {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      display: block;
+      loading: lazy;
+    }
+
+    .pasarela-content {
+      display: none;
+      background: #f9f9f9;
+      padding: 2rem 0;
+    }
+
+    .pasarela-content-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .pasarela-item.active .pasarela-header {
+      height: auto;
+      min-height: 100px;
+      background-color: rgba(230,57,70,0.9);
+      align-items: center;
+      position: relative;
+      flex-direction: column;
+      padding: 2rem 1rem;
+    }
+
+    .pasarela-item.active .pasarela-header h2 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      opacity: 1;
+      margin-top: 1rem;
+    }
+
+    .pasarela-item.active .pasarela-imagen {
+      display: none;
+    }
+
+    .pasarela-item.active .pasarela-content {
+      display: block;
+    }
+
+    /* Estilos para la sección Acerca de nosotros */
+    .about-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      color: var(--text-color);
+    }
+    
+    .about-history,
+    .about-philosophy,
+    .team-coordination,
+    .team-members-list {
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+    
+    .about-history h3,
+    .about-philosophy h3,
+    .team-coordination h3,
+    .team-members-list h3 {
+      font-family: 'Merriweather', serif;
+      color: var(--primary-color);
+      font-size: clamp(1.7rem, 4vw, 2rem);
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    .about-history h3:after,
+    .about-philosophy h3:after,
+    .team-coordination h3:after,
+    .team-members-list h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: var(--primary-color);
+    }
+    
+    .about-features {
+      margin: 2rem 0;
+      list-style: none;
+    }
+    
+    .about-features li {
+      margin-bottom: 1rem;
+      position: relative;
+      padding-left: 2rem;
+      font-size: 1.1rem;
+    }
+    
+    .about-features li:before {
+      content: "•";
+      color: var(--primary-color);
+      font-size: 2rem;
+      position: absolute;
+      left: 0;
+      top: -0.4rem;
+    }
+    
+    /* Foto del Elenco */
+    .team-photo {
+      position: relative;
+      width: 100%;
+      margin: 3rem 0;
+    }
+
+    .team-photo img {
+      width: 100%;
+      max-height: 600px;
+      object-fit: cover;
+      border-radius: var(--border-radius-lg);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      loading: lazy;
+    }
+
+    .team-photo img:hover {
+      transform: scale(1.01);
+    }
+
+    .team-photo p {
+      text-align: center;
+      margin-top: 1rem;
+      font-style: italic;
+      color: #666;
+      font-size: 1.1rem;
+    }
+    
+    /* Coordinación Artística */
+    .coordinators-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .coordinator {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: var(--border-radius-lg);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: var(--transition);
+    }
+    
+    .coordinator:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+    
+    .coordinator-name {
+      font-weight: bold;
+      color: #222;
+      font-size: 1.2rem;
+    }
+    
+    /* Lista de integrantes */
+    .members-list {
+      background: #fff;
+      padding: 2rem;
+      border-radius: var(--border-radius-lg);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* Galería Vertical dentro de los acordeones */
+
+.residency-item {
+  position: relative;
+  width: 100%;
+  /* Mantiene proporción 16:9 para desktop */
+  aspect-ratio: 16/9;
+  margin: 0 auto;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.residency-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;               /* Cubre todo el contenedor */
+  object-position: center center; /* Centra la imagen */
+  transition: transform 0.5s ease;
+}
+
+.residency-item:hover img {
+  transform: scale(1.03);
+}
+
+.residency-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  background: rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.residency-item:hover .residency-overlay,
+.residency-item:focus-within .residency-overlay {
+  opacity: 1;
+}
+
+.residency-overlay .title {
+  color: var(--light-text);
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  text-align: center;
+  margin: auto 0;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+.residency-overlay button {
+  background: rgba(230,57,70,0.9);
+  color: var(--light-text);
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.residency-overlay button:hover,
+.residency-overlay button:focus {
+  background: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  outline: none;
+}
+
+.links-btn {
+  align-self: flex-start;
+}
+
+.residency-info-btn {
+  align-self: flex-end;
+}
+
+/* nuestro trabajo */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin: 3rem 0;
+  padding-bottom: 3rem;
+}
+
+.gallery-item {
+  position: relative;
+  width: 100%;
+  /* Mantiene proporción 16:9 */
+  aspect-ratio: 16/9;
+  margin: 0 auto;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.03);
+}
+
+.item-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  background: rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover .item-overlay,
+.gallery-item:focus-within .item-overlay {
+  opacity: 1;
+}
+
+.item-overlay .title {
+  color: var(--light-text);
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  text-align: center;
+  margin: auto 0;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+.item-overlay button {
+  background: rgba(230,57,70,0.9);
+  color: var(--light-text);
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.item-overlay button:hover,
+.item-overlay button:focus {
+  background: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  outline: none;
+}
+
+.media-btn {
+  align-self: flex-start;
+}
+
+.info-btn {
+  align-self: flex-end;
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 768px) {
+  .residency-item,
+  .gallery-item {
+    aspect-ratio: 16/9;
+    height: auto;
+  }
+  .residency-item img,
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+
+    /* Sesiones de Grabación - Versión mejorada */
+    .recording-sessions {
+      padding: 4rem 0;
+    }
+    
+    .recording-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      margin: 3rem auto;
+      max-width: 1200px;
+    }
+    
+    .recording-card {
+      position: relative;
+      height: 400px;
+      perspective: 1000px;
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: var(--transition);
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    .recording-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .recording-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    
+    .recording-card.flipped .recording-card-inner {
+      transform: rotateY(180deg);
+    }
+    
+    .recording-card-front, 
+    .recording-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+    
+    .recording-card-front {
+      background-color: #fff;
+      color: var(--text-color);
+    }
+    
+    .recording-card-back {
+      background-color: #f8f9fa;
+      color: var(--text-color);
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+    }
+    
+    .recording-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+      loading: lazy;
+    }
+    
+    .recording-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      color: var(--light-text);
+      padding: 1rem;
+      text-align: center;
+      font-family: 'Merriweather', serif;
+      font-size: 1.5rem;
+    }
+    
+    /* Efecto hover mejorado */
+    .recording-grid:hover .recording-card:not(:hover) img {
+      filter: grayscale(100%) brightness(0.7);
+    }
+    
+    .recording-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Reproductor de video */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      flex-grow: 1;
+      border-radius: var(--border-radius);
+    }
+    
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .recording-card-back .title {
+      margin-top: 1rem;
+      font-family: 'Merriweather', serif;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      text-align: center;
+    }
+
+    /* Residencias y Colaboraciones */
+    .residencies-section {
+  margin-top: 3rem;
+}
+
+.residency-item {
+  position: relative;
+  width: 100%;
+  /* Para desktop: mantén proporción 16:9 o altura mínima si prefieres */
+  aspect-ratio: 16/9;
+  margin: 0 auto;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.residency-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;               /* Cubre todo el contenedor */
+  object-position: center center; /* Centra la imagen */
+  transition: transform 0.5s ease;
+}
+
+.residency-item:hover img {
+  transform: scale(1.03);
+}
+
+.residency-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  background: rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.residency-item:hover .residency-overlay,
+.residency-item:focus-within .residency-overlay {
+  opacity: 1;
+}
+
+.residency-overlay .title {
+  color: var(--light-text);
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  text-align: center;
+  margin: auto 0;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+.residency-overlay button {
+  background: rgba(230,57,70,0.9);
+  color: var(--light-text);
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.residency-overlay button:hover,
+.residency-overlay button:focus {
+  background: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  outline: none;
+}
+
+.links-btn {
+  align-self: flex-start;
+}
+
+.residency-info-btn {
+  align-self: flex-end;
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 768px) {
+  .residency-item {
+    /* Eliminamos altura mínima fija para que se adapte solo según proporción */
+    aspect-ratio: 16/9;
+    height: auto;
+  }
+  .residency-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+    /* Estilos para el contenedor de contacto */
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      background: linear-gradient(to right, #fff 100%);
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin: 2rem 0;
+    }
+
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-details {
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-label {
+      width: 120px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .social-section {
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .social-title {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      font-family: 'Merriweather', serif;
+      font-size: 1.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .logo-container {
+      flex: 0 0 100%;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 700px;
+      background-image: url('assets/oein-logo.webp');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .credits-section {
+      background-color: #000;
+      color: white;
+      padding: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .credits-left {
+      flex: 1;
+      min-width: 300px;
+      padding: 1rem;
+    }
+
+    .credits-right {
+      flex: 1;
+      min-width: 300px;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .credits-title {
+      font-family: 'Merriweather', serif;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .credits-list {
+      list-style-type: none;
+    }
+
+    .credits-list li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .credits-list li:before {
+      content: "•";
+      color: var(--primary-color);
+      position: absolute;
+      left: 0;
+    }
+
+    /* Paneles Modales */
+    .panel { 
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: 1000;
+      padding: 2rem;
+    }
+    
+    .panel.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .panel-content {
+      background: #fff;
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      border-radius: var(--border-radius-lg);
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+    
+    .panel-header {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: flex-end;
+      z-index: 2;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--primary-color);
+      transition: transform 0.3s ease;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    
+    .close-btn:hover,
+    .close-btn:focus {
+      transform: rotate(90deg);
+      background: rgba(230,57,70,0.1);
+      outline: none;
+    }
+    
+    .media-panel {
+      padding: 2rem;
+    }
+    
+    .media-panel iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: var(--border-radius);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    
+    .info-panel {
+      font-family: 'Montserrat', sans-serif;
+      padding: 2rem;
+      color: var(--text-color);
+    }
+    
+    .info-panel h3 {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(1.8rem, 4vw, 2.2rem);
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    .info-panel h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: var(--primary-color);
+    }
+    
+    .info-panel .date {
+      font-style: italic;
+      color: #666;
+      display: block;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    
+    .info-panel p {
+      margin-bottom: 1.8rem;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+    
+    .info-panel ul {
+      list-style: none;
+      margin: 2rem 0;
+    }
+    
+    .info-panel ul li {
+      margin-bottom: 1rem;
+      position: relative;
+      padding-left: 2rem;
+      font-size: 1.1rem;
+    }
+    
+    .info-panel ul li::before {
+      content: "•";
+      color: var(--primary-color);
+      font-size: 2rem;
+      position: absolute;
+      left: 0;
+      top: -0.4rem;
+    }
+
+    /* Panel de Links */
+    .links-panel {
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    .links-panel h3 {
+      font-family: 'Merriweather', serif;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+    }
+    
+    .links-panel a {
+      display: inline-block;
+      margin: 0 1rem;
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    
+    .links-panel a:hover,
+    .links-panel a:focus {
+      transform: translateY(-3px);
+      color: var(--primary-dark);
+      outline: none;
+    }
+
+    .social-icon {
+      font-size: 2rem;
+      margin-right: 0.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      margin-top: 2.5rem;
+      background: url('assets/footer-bg.webp') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light-text);
+      text-align: center;
+    }
+    
+    .footer-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0,0,0,0.7);
+    }
+    
+    .footer-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 0 2rem;
+    }
+    
+    .footer p {
+      font-family: 'Merriweather', serif;
+      font-size: 1.2rem;
+      margin: 0;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .fixed-buttons {
+        top: 10px;
+        right: 10px;
+      }
+      
+      .buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 250px;
+        margin-bottom: 1rem;
+      }
+      
+      .pasarela-imagen {
+        height: 280px;
+      }
+      
+      .gallery-item {
+        min-height: 50vh;
+      }
+      
+      .panel-content {
+        border-radius: 0;
+      }
+      
+      .footer {
+        height: 150px;
+      }
+      
+      .footer p {
+        font-size: 1rem;
+      }
+      
+      .coordinators-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .members-list {
+        padding: 1.5rem;
+        font-size: 1rem;
+      }
+      
+      .about-features li {
+        padding-left: 1.5rem;
+        font-size: 1rem;
+      }
+
+      .team-photo img {
+        max-height: 400px;
+      }
+
+      .recording-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .recording-card {
+        height: 250px;
+      }
+
+      .contact-container {
+        flex-direction: column;
+        background: linear-gradient(to bottom, #fff 60%, #000 40%);
+      }
+      
+      .logo-container {
+        flex: 0 0 200px;
+        min-height: 200px;
+      }
+      
+      .links-panel a {
+        display: block;
+        margin: 1rem 0;
+      }
+
+      .credits-section {
+        flex-direction: column;
+      }
+
+      .credits-left, .credits-right {
+        min-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-item,
+      .residency-item {
+        min-height: 40vh;
+      }
+      
+      .recording-card {
+        height: 200px;
+      }
+
+      .contact-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact-label {
+        margin-bottom: 0.5rem;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+  <!-- Botón fijo de descarga -->
+  <div class="fixed-buttons">
+    <button class="download-btn" onclick="downloadPortfolio()" aria-label="Descargar portafolio en PDF">
+      <i class="fas fa-download" aria-hidden="true"></i> Descargar
+    </button>
+  </div>
+
+  <!-- Hero CONTENIDO -->
+<section class="hero" aria-labelledby="main-title">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <img src="assets/oein-logo.png" alt="OEIN Logo" class="logo">
+    <h2 class="subtitle">ORQUESTA<br>EXPERIMENTAL DE<br>INSTRUMENTOS NATIVOS</h2>
+    <div class="buttons">
+      <button class="btn" data-target="nosotros">Acerca de nosotros</button>
+      <button class="btn" data-target="trabajo">Nuestro trabajo</button>
+      <button class="btn" data-target="grabaciones">Sesiones de grabación</button>
+      <button class="btn" data-target="residencias">Residencias</button>
+      <button class="btn" data-target="contacto">Contacto</button>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Pasarela Visual -->
+  <div class="pasarela-container">
+    <!-- Acerca de nosotros -->
+    <div class="pasarela-item" id="nosotros">
+      <img src="assets/pasarela-nosotros.webp" alt="Acerca de nosotros" class="pasarela-imagen" loading="lazy">
+      <div class="pasarela-header" tabindex="0" role="button" aria-expanded="false" aria-controls="nosotros-content">
+        <h2>Acerca de nosotros</h2>
+      </div>
+      <div class="pasarela-content" id="nosotros-content">
+        <div class="pasarela-content-inner">
+          <div class="about-section">
+            <!-- Historia -->
+            <div class="about-history">
+              <h3>La Orquesta Experimental de Instrumentos Nativos</h3>
+              <p>La Orquesta Experimental de Instrumentos Nativos (OEIN), fundada en 1980 en La Paz, Bolivia, es pionera en la interpretación, difusión, investigación y enseñanza de la música tradicional andina y contemporánea creada para instrumentos tradicionales. Con más de 40 años de trayectoria artística independiente, hemos llevado nuestra música y cultura a distintos escenarios nacionales e internacionales, promoviendo el diálogo intercultural y fortaleciendo la identidad boliviana.</p>
+              
+              <p>Nuestro trabajo se centra en conservar y dar visibilidad a la música tradicional boliviana, y explorar nuevos caminos de la sonoridad.</p>
+              
+              <ul class="about-features">
+                <li>
+                  <strong>Presencia internacional en:</strong> Alemania, Canadá, Uruguay, Italia, Francia, Suiza, Austria, Polonia, Argentina, Colombia y Australia.
+                </li>
+                <li>
+                  <strong>Ciudades en Bolivia:</strong> La Paz, Oruro, Cochabamba, Potosí, Beni, Santa Cruz, Sucre y El Alto.
+                </li>
+              </ul>
+            </div>
+            
+            <!-- Foto del Elenco -->
+            <div class="team-photo">
+              <img src="assets/elenco-oein.webp" alt="Elenco completo de la OEIN" loading="lazy">
+              <p>El elenco completo de la Orquesta Experimental de Instrumentos Nativos</p>
+            </div>
+            
+            <!-- Coordinación Artística -->
+            <div class="team-coordination">
+              <h3>Coordinación Artística</h3>
+              <div class="coordinators-grid">
+                <div class="coordinator">
+                  <div class="coordinator-name">Ethan Olmos</div>
+                </div>
+                <div class="coordinator">
+                  <div class="coordinator-name">Andrea Álvarez</div>
+                </div>
+                <div class="coordinator">
+                  <div class="coordinator-name">Gabriela Saravia</div>
+                </div>
+                <div class="coordinator">
+                  <div class="coordinator-name">Tatiana López</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Integrantes -->
+            <div class="team-members-list">
+              <h3>Integrantes</h3>
+              <div class="members-list">
+                ARIEL LAURA, ÁLVARO CABRERA, EINAR FUENTES, CAMED ALEJANDRO, NIKO REA,
+                PABLO OLMOS, SAMUEL ARCE, WILLY CHURA, ADRIANA ESCOBAR, ALBA CORDERO,
+                ANDRÉS ARAMAYO, IBRA MURILLO, ISABEL SANJINÉS, GABRIEL CAPAJEÑA,
+                JUAN FRANCO, MARIEL TERÁN, OMAR HERRERA, PEDRO ALIAGA, ROMINA QUISBERT,
+                MARÍA MEDINA, ELBA MAMANI Y MAYRA OCHOA
+              </div>
+            </div>
+            
+            <!-- Filosofía -->
+            <div class="about-philosophy">
+              <h3>Nuestra filosofía</h3>
+              <p>«Creemos profundamente en los saberes ancestrales y en la importancia de preservarlos, reconociendo que quienes los guardan son verdaderos maestros de la coexistencia con la naturaleza. Valoramos la conservación y creación sostenible de nuestros instrumentos, fomentando siempre la cooperación mutua entre cada integrante, participante e invitado.»</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nuestro trabajo -->
+    <div class="pasarela-item" id="trabajo">
+      <img src="assets/pasarela-trabajo.webp" alt="Nuestro trabajo" class="pasarela-imagen" loading="lazy">
+      <div class="pasarela-header" tabindex="0" role="button" aria-expanded="false" aria-controls="trabajo-content">
+        <h2>Nuestro trabajo</h2>
+      </div>
+      <div class="pasarela-content" id="trabajo-content">
+        <div class="pasarela-content-inner">
+          <div class="gallery">
+            <!-- Item 1: FESTIVAL INTERNACIONAL DE LAS ARTES SANTA ROSA -->
+            <div class="gallery-item">
+              <img src="assets/festival-artes-santa-rosa.webp" alt="FESTIVAL INTERNACIONAL DE LAS ARTES SANTA ROSA" loading="lazy">
+              <div class="item-overlay">
+                <button class="media-btn" onclick="togglePanel('media1')">Media disponible</button>
+                <div class="title">FESTIVAL INTERNACIONAL DE LAS ARTES SANTA ROSA</div>
+                <button class="info-btn" onclick="togglePanel('info1')">Más información</button>
+              </div>
+            </div>
+
+            <!-- Item 2: OEINEFICO -->
+            <div class="gallery-item">
+              <img src="assets/oeinefico.webp" alt="OEINEFICO" loading="lazy">
+              <div class="item-overlay">
+                <button class="media-btn" onclick="togglePanel('media2')">Media disponible</button>
+                <div class="title">OEINEFICO</div>
+                <button class="info-btn" onclick="togglePanel('info2')">Más información</button>
+              </div>
+            </div>
+
+            <!-- Item 3: JORNADAS DE MÚSICA CONTEMPORÁNEA -->
+            <div class="gallery-item">
+              <img src="assets/jornadas-musica-contemporanea.webp" alt="JORNADAS DE MÚSICA CONTEMPORÁNEA" loading="lazy">
+              <div class="item-overlay">
+                <button class="media-btn" onclick="togglePanel('media3')">Media disponible</button>
+                <div class="title">JORNADAS DE MÚSICA CONTEMPORÁNEA</div>
+                <button class="info-btn" onclick="togglePanel('info3')">Más información</button>
+              </div>
+            </div>
+
+            <!-- Item 4: MÚSICAS DE JALLUPACHA -->
+            <div class="gallery-item">
+              <img src="assets/musicas-jallupacha.webp" alt="MÚSICAS DE JALLUPACHA" loading="lazy">
+              <div class="item-overlay">
+                <button class="media-btn" onclick="togglePanel('media4')">Media disponible</button>
+                <div class="title">MÚSICAS DE JALLUPACHA</div>
+                <button class="info-btn" onclick="togglePanel('info4')">Más información</button>
+              </div>
+            </div>
+
+            <!-- Item 5: SEMINARIO SOBRE LA MÚSICA AUTÓCTONA DE BOLIVIA -->
+            <div class="gallery-item">
+              <img src="assets/seminario-musica-autoctona.webp" alt="SEMINARIO SOBRE LA MÚSICA AUTÓCTONA DE BOLIVIA" loading="lazy">
+              <div class="item-overlay">
+                <button class="media-btn" onclick="togglePanel('media5')">Media disponible</button>
+                <div class="title">SEMINARIO SOBRE LA MÚSICA AUTÓCTONA DE BOLIVIA</div>
+                <button class="info-btn" onclick="togglePanel('info5')">Más información</button>
+              </div>
+            </div>
+
+            <!-- Item 6: CONCIERTO CICLO 1 -->
+            <div class="gallery-item">
+              <img src="assets/concierto-ciclo1.webp" alt="CONCIERTO CICLO 1" loading="lazy">
+              <div class="item-overlay">
+                <button class="media-btn" onclick="togglePanel('media6')">Media disponible</button>
+                <div class="title">CONCIERTO CICLO 1</div>
+                <button class="info-btn" onclick="togglePanel('info6')">Más información</button>
+              </div>
+            </div>
+
+            <!-- Item 7: M.S.P -->
+            <div class="gallery-item">
+              <img src="assets/msp.webp" alt="M.S.P" loading="lazy">
+              <div class="item-overlay">
+                <button class="media-btn" onclick="togglePanel('media7')">Media disponible</button>
+                <div class="title">M.S.P</div>
+                <button class="info-btn" onclick="togglePanel('info7')">Más información</button>
+              </div>
+            </div>
+
+            <!-- Item 8: BIENAL DE VENECIA -->
+            <div class="gallery-item">
+              <img src="assets/bienal-venecia.webp" alt="BIENAL DE VENECIA" loading="lazy">
+              <div class="item-overlay">
+                <button class="media-btn" onclick="togglePanel('media8')">Media disponible</button>
+                <div class="title">BIENAL DE VENECIA</div>
+                <button class="info-btn" onclick="togglePanel('info8')">Más información</button>
+              </div>
+            </div>
+
+            <!-- Item 9: CONCIERTO 40 ANIVERSARIO -->
+            <div class="gallery-item">
+              <img src="assets/concierto-40-aniversario.webp" alt="CONCIERTO 40 ANIVERSARIO" loading="lazy">
+              <div class="item-overlay">
+                <button class="media-btn" onclick="togglePanel('media9')">Media disponible</button>
+                <div class="title">CONCIERTO 40 ANIVERSARIO</div>
+                <button class="info-btn" onclick="togglePanel('info9')">Más información</button>
+              </div>
+            </div>
+
+            <!-- Item 10: MAERZ MUSIK -->
+            <div class="gallery-item">
+              <img src="assets/maerz-musik.webp" alt="MAERZ MUSIK" loading="lazy">
+              <div class="item-overlay">
+                <button class="media-btn" onclick="togglePanel('media10')">Media disponible</button>
+                <div class="title">MAERZ MUSIK</div>
+                <button class="info-btn" onclick="togglePanel('info10')">Más información</button>
+              </div>
+            </div>
+
+            <!-- Item 11: AMALGAMAS -->
+            <div class="gallery-item">
+              <img src="assets/amalgamas.webp" alt="AMALGAMAS" loading="lazy">
+              <div class="item-overlay">
+                <button class="media-btn" onclick="togglePanel('media11')">Media disponible</button>
+                <div class="title">AMALGAMAS</div>
+                <button class="info-btn" onclick="togglePanel('info11')">Más información</button>
+              </div>
+            </div>
+
+            <!-- Item 12: LO SAGRADO -->
+            <div class="gallery-item">
+              <img src="assets/lo-sagrado.webp" alt="LO SAGRADO" loading="lazy">
+              <div class="item-overlay">
+                <button class="media-btn" onclick="togglePanel('media12')">Media disponible</button>
+                <div class="title">LO SAGRADO</div>
+                <button class="info-btn" onclick="togglePanel('info12')">Más información</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sesiones de Grabación - Versión mejorada -->
+    <div class="pasarela-item" id="grabaciones">
+      <img src="assets/pasarela-grabaciones.webp" alt="Sesiones de grabación" class="pasarela-imagen" loading="lazy">
+      <div class="pasarela-header" tabindex="0" role="button" aria-expanded="false" aria-controls="grabaciones-content">
+        <h2>Sesiones de grabación</h2>
+      </div>
+      <div class="pasarela-content" id="grabaciones-content">
+        <div class="pasarela-content-inner">
+          <div class="recording-sessions">
+            <div class="recording-grid">
+              <!-- Tarjeta 1 - MAMAK -->
+              <div class="recording-card" onclick="flipCard(this)" tabindex="0" role="button" aria-label="Ver detalles de MAMAK">
+                <div class="recording-card-inner">
+                  <div class="recording-card-front">
+                    <img src="assets/grabacion1.webp" alt="MAMAK" loading="lazy">
+                    <div class="recording-title">MAMAK</div>
+                  </div>
+                  <div class="recording-card-back">
+                    <div class="video-container">
+                      <iframe src="https://drive.google.com/file/d/1B_htRngWsVaG6Quv3ZXZyxBWlKyzfpsw/preview?usp=drive_link" 
+                              frameborder="0" 
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                              allowfullscreen
+                              title="Video de MAMAK"></iframe>
+                    </div>
+                    <div class="title">MAMAK</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Tarjeta 2 - DOBLE LINDE -->
+              <div class="recording-card" onclick="flipCard(this)" tabindex="0" role="button" aria-label="Ver detalles de DOBLE LINDE">
+                <div class="recording-card-inner">
+                  <div class="recording-card-front">
+                    <img src="assets/grabacion2.webp" alt="DOBLE LINDE" loading="lazy">
+                    <div class="recording-title">DOBLE LINDE</div>
+                  </div>
+                  <div class="recording-card-back">
+                    <div class="video-container">
+                      <iframe src="https://drive.google.com/file/d/1Ax3fU-bmwggf9stsZyzq6X2JJK3e6vAQ/preview?usp=drive_link" 
+                              frameborder="0" 
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                              allowfullscreen
+                              title="Video de DOBLE LINDE"></iframe>
+                    </div>
+                    <div class="title">DOBLE LINDE</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Tarjeta 3 - VIENTO Y LUNA -->
+              <div class="recording-card" onclick="flipCard(this)" tabindex="0" role="button" aria-label="Ver detalles de VIENTO Y LUNA">
+                <div class="recording-card-inner">
+                  <div class="recording-card-front">
+                    <img src="assets/grabacion3.webp" alt="VIENTO Y LUNA" loading="lazy">
+                    <div class="recording-title">VIENTO Y LUNA</div>
+                  </div>
+                  <div class="recording-card-back">
+                    <div class="video-container">
+                      <iframe src="https://drive.google.com/file/d/1goyYCCAs47olijHlHg0E3s9P_Qcg3vpN/preview?usp=drive_link" 
+                              frameborder="0" 
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                              allowfullscreen
+                              title="Video de VIENTO Y LUNA"></iframe>
+                    </div>
+                    <div class="title">VIENTO Y LUNA</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Tarjeta 4 - JULO JULO -->
+              <div class="recording-card" onclick="flipCard(this)" tabindex="0" role="button" aria-label="Ver detalles de JULO JULO">
+                <div class="recording-card-inner">
+                  <div class="recording-card-front">
+                    <img src="assets/grabacion4.webp" alt="JULO JULO" loading="lazy">
+                    <div class="recording-title">JULO JULO</div>
+                  </div>
+                  <div class="recording-card-back">
+                    <div class="video-container">
+                      <iframe src="https://drive.google.com/file/d/1Krd2YIebEaSbJVcNLepZrtI7jgR-kDGb/preview?usp=drive_link" 
+                              frameborder="0" 
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                              allowfullscreen
+                              title="Video de JULO JULO"></iframe>
+                    </div>
+                    <div class="title">JULO JULO</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Residencias y Colaboraciones -->
+    <div class="pasarela-item" id="residencias">
+      <img src="assets/pasarela-residencias.webp" alt="Residencias y colaboraciones" class="pasarela-imagen" loading="lazy">
+      <div class="pasarela-header" tabindex="0" role="button" aria-expanded="false" aria-controls="residencias-content">
+        <h2>Residencias y colaboraciones</h2>
+      </div>
+      <div class="pasarela-content" id="residencias-content">
+        <div class="pasarela-content-inner">
+          <div class="residencies-section">
+            <div class="gallery">
+              <!-- Item 1 -->
+              <div class="residency-item">
+                <img src="assets/residencia1.webp" alt="Residencia 1" loading="lazy">
+                <div class="residency-overlay">
+                  <button class="links-btn" onclick="togglePanel('links1')">Links disponibles</button>
+                  <div class="title">BOB HOLMAN - POETA</div>
+                  <button class="residency-info-btn" onclick="togglePanel('residency-info1')">Más información</button>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="residency-item">
+                <img src="assets/residencia2.webp" alt="Residencia 2" loading="lazy">
+                <div class="residency-overlay">
+                  <button class="links-btn" onclick="togglePanel('links2')">Links disponibles</button>
+                  <div class="title">RENÉ PIERRE ALLAIN - ARTISTA PLÁSTICO</div>
+                  <button class="residency-info-btn" onclick="togglePanel('residency-info2')">Más información</button>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="residency-item">
+                <img src="assets/residencia3.webp" alt="Residencia 3" loading="lazy">
+                <div class="residency-overlay">
+                  <button class="links-btn" onclick="togglePanel('links3')">Links disponibles</button>
+                  <div class="title">SONO KUWAYAMA - ARTISTA MULTIDISCIPLINARIO</div>
+                  <button class="residency-info-btn" onclick="togglePanel('residency-info3')">Más información</button>
+                </div>
+              </div>
+
+              <!-- Item 4 -->
+              <div class="residency-item">
+                <img src="assets/residencia4.webp" alt="Residencia 4" loading="lazy">
+                <div class="residency-overlay">
+                  <button class="links-btn" onclick="togglePanel('links4')">Links disponibles</button>
+                  <div class="title">DELFINA</div>
+                  <button class="residency-info-btn" onclick="togglePanel('residency-info4')">Más información</button>
+                </div>
+              </div>
+
+              <!-- Item 5 -->
+              <div class="residency-item">
+                <img src="assets/residencia5.webp" alt="Residencia 5" loading="lazy">
+                <div class="residency-overlay">
+                  <button class="links-btn" onclick="togglePanel('links5')">Links disponibles</button>
+                  <div class="title">ORQUESTA SINFÓNICA NACIONAL</div>
+                  <button class="residency-info-btn" onclick="togglePanel('residency-info5')">Más información</button>
+                </div>
+              </div>
+
+              <!-- Item 6 -->
+              <div class="residency-item">
+                <img src="assets/residencia6.webp" alt="Residencia 6" loading="lazy">
+                <div class="residency-overlay">
+                  <button class="links-btn" onclick="togglePanel('links6')">Links disponibles</button>
+                  <div class="title">SOLISTENENSEMBLE PHØNIX16</div>
+                  <button class="residency-info-btn" onclick="togglePanel('residency-info6')">Más información</button>
+                </div>
+              </div>
+
+              <!-- Item 7 -->
+              <div class="residency-item">
+                <img src="assets/residencia7.webp" alt="Residencia 7" loading="lazy">
+                <div class="residency-overlay">
+                  <button class="links-btn" onclick="togglePanel('links7')">Links disponibles</button>
+                  <div class="title">ENSAMBLE MOXOS</div>
+                  <button class="residency-info-btn" onclick="togglePanel('residency-info7')">Más información</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contacto -->
+    <div class="pasarela-item" id="contacto">
+      <img src="assets/pasarela-contacto.webp" alt="Contacto" class="pasarela-imagen" loading="lazy">
+      <div class="pasarela-header" tabindex="0" role="button" aria-expanded="false" aria-controls="contacto-content">
+        <h2>Contacto</h2>
+      </div>
+      <div class="pasarela-content" id="contacto-content">
+        <div class="pasarela-content-inner">
+          <!-- Nuevo contenedor con degradado -->
+          <div class="contact-container">
+            <div class="contact-info">
+              <div class="contact-details">
+                <p style="text-align: center; margin-bottom: 2rem;">Para colaboraciones, presentaciones o más información sobre nuestro trabajo:</p>
+                
+                <div class="contact-row">
+                  <span class="contact-label">Email:</span>
+                  <span>oeinbolivia@gmail.com</span>
+                </div>
+                <div class="contact-row">
+                  <span class="contact-label">Teléfono:</span>
+                  <span>+591 6069908</span>
+                </div>
+                <div class="contact-row">
+                  <span class="contact-label">Dirección:</span>
+                  <span>Ramiro Castrillo, Llojeta, La Paz, Bolivia</span>
+                </div>
+                
+                <div class="social-section">
+                  <h3 class="social-title">Síguenos en redes</h3>
+                  <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=100080862922447" target="_blank" rel="noopener noreferrer" class="social-link">
+                      <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                    <a href="https://www.instagram.com/oein_oficial/" target="_blank" rel="noopener noreferrer" class="social-link">
+                      <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://www.youtube.com/@orquestaexperimentaldeinst7970" target="_blank" rel="noopener noreferrer" class="social-link">
+                      <i class="fab fa-youtube"></i> YouTube
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div aria-hidden="true">
+              <!-- Espacio para el logo (se agregará con CSS) -->
+            </div>
+          </div>
+          
+          <!-- Sección de créditos -->
+          <div class="credits-section">
+            <div class="credits-left">
+              <h3 class="credits-title">Créditos</h3>
+              <ul class="credits-list">
+                <li>Registro de audio y video: Ariel Laura, Andrea Alvarez y René Pierre.</li>
+                <li>Imagenes: Ariel Laura, Luciana Dalman y Mayra Ochoa. </li>
+                <li>Diseño gráfico: Romina Quisberth y Ethan Olmos.</li>
+                <li>Desarrollo web: Ethan Olmos y Erick Cuiza.</li>
+              </ul>
+            </div>
+            <div class="credits-right">
+              <img src="assets/oein-logo.webp" alt="Logo OEIN" style="max-width: 200px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" aria-label="Pie de página">
+    <div class="footer-overlay"></div>
+    <div class="footer-content">
+      <p>© 2025 Portafolio OEIN. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Media de nuestro trabajo videos (12 paneles) -->
+   <!-- santa rosa -->
+  <div class="panel" id="media1" role="dialog" aria-modal="true" aria-labelledby="media1-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('media1')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="media-panel">
+        <iframe src="https://drive.google.com/file/d/1uhDvAITp7xu5CtINh9mTf2ByZgmswf-T/preview?usp=drive_link" frameborder="0" allowfullscreen title="Video del Festival Internacional de las Artes Santa Rosa"></iframe>
+      </div>
+    </div>
+  </div>
+<!-- oeinefico -->
+  <div class="panel" id="media2" role="dialog" aria-modal="true" aria-labelledby="media2-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('media2')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="media-panel">
+        <iframe src="https://drive.google.com/file/d/1chwVCxn0y1gZX3kJ_I9OE5TER8088k_Z/preview?usp=drive_link" frameborder="0" allowfullscreen title="Video de OEINEFICO"></iframe>
+      </div>
+    </div>
+  </div>
+<!-- jornadas de musica contempranea -->
+  <div class="panel" id="media3" role="dialog" aria-modal="true" aria-labelledby="media3-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('media3')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="media-panel">
+        <iframe src="https://www.youtube.com/embed/3ltxx2h2MnQ" frameborder="0" allowfullscreen title="Video de Jornadas de Música Contemporánea"></iframe>
+      </div>
+    </div>
+  </div>
+<!-- musicas de jallupacha -->
+  <div class="panel" id="media4" role="dialog" aria-modal="true" aria-labelledby="media4-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('media4')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="media-panel">
+        <iframe src="https://drive.google.com/file/d/1jBoadDzQVft39eVjHBV2iSmWmDzF0I1k/preview?usp=drive_link" frameborder="0" allowfullscreen title="Video de Músicas de Jallupacha"></iframe>
+      </div>
+    </div>
+  </div>
+<!-- seminadios de musica autoctona -->
+  <div class="panel" id="media5" role="dialog" aria-modal="true" aria-labelledby="media5-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('media5')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="media-panel">
+        <iframe src="https://drive.google.com/file/d/17oOh3qpHi45_D8MayjRxz4fP2A-EXShh/preview?usp=drive_link" frameborder="0" allowfullscreen title="Video del Seminario sobre la Música Autóctona de Bolivia"></iframe>
+      </div>
+    </div>
+  </div>
+<!-- concierto ciclo 1 -->
+  <div class="panel" id="media6" role="dialog" aria-modal="true" aria-labelledby="media6-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('media6')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="media-panel">
+        <iframe src="https://drive.google.com/file/d/1XIWtv1M72rmElk8YTPsJivNqk0Gakz-F/preview?usp=drive_link" frameborder="0" allowfullscreen title="Video del Concierto Ciclo 1"></iframe>
+      </div>
+    </div>
+  </div>
+<!-- cineclubcito -->
+  <div class="panel" id="media7" role="dialog" aria-modal="true" aria-labelledby="media7-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('media7')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="media-panel">
+        <iframe src="https://drive.google.com/file/d/1QWK2XtLGC4Tborm5TE531yFxXwBfI5wu/preview?usp=drive_link" frameborder="0" allowfullscreen title="Video de M.S.P"></iframe>
+      </div>
+    </div>
+  </div>
+<!-- bienal de venecia -->
+  <div class="panel" id="media8" role="dialog" aria-modal="true" aria-labelledby="media8-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('media8')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="media-panel">
+        <iframe src="https://drive.google.com/file/d/1BW3XOeDujRn2Z4Vxk4lrHMNfOmUynF2F/preview?usp=drive_link" frameborder="0" allowfullscreen title="Video de la Bienal de Venecia"></iframe>
+      </div>
+    </div>
+  </div>
+<!-- concierto 40 aniversario -->
+  <div class="panel" id="media9" role="dialog" aria-modal="true" aria-labelledby="media9-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('media9')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="media-panel">
+        <iframe src="https://www.youtube.com/embed/29ECKTELi5M" frameborder="0" allowfullscreen title="Video del Concierto 40 Aniversario"></iframe>
+      </div>
+    </div>
+  </div>
+<!-- maerz musik -->
+  <div class="panel" id="media10" role="dialog" aria-modal="true" aria-labelledby="media10-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('media10')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="media-panel">
+        <iframe src="https://www.youtube.com/embed/ho46oKYtm2M" frameborder="0" allowfullscreen title="Video de Maerz Musik"></iframe>
+      </div>
+    </div>
+  </div>
+<!-- amalgamas -->
+  <div class="panel" id="media11" role="dialog" aria-modal="true" aria-labelledby="media11-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('media11')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="media-panel">
+        <iframe src="https://drive.google.com/file/d/1HkMbelROAXpGg7cOgr0oopYDE-GoVg1C/preview?usp=drive_link" frameborder="0" allowfullscreen title="Video de Amalgamas"></iframe>
+      </div>
+    </div>
+  </div>
+<!-- lo sagrado -->
+  <div class="panel" id="media12" role="dialog" aria-modal="true" aria-labelledby="media12-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('media12')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="media-panel">
+        <iframe src="https://drive.google.com/file/d/1snF514Zdy_L5dkmQnHTwF2ZOk3WoqWwn/preview?usp=drive_link" frameborder="0" allowfullscreen title="Video de Lo Sagrado"></iframe>
+      </div>
+    </div>
+  </div>
+
+<!-- Info de nuestro trabajo (12 paneles) -->
+<div class="panel" id="info1" role="dialog" aria-modal="true" aria-labelledby="info1-title" hidden>
+  <div class="panel-content">
+    <div class="panel-header">
+      <button class="close-btn" onclick="togglePanel('info1')" aria-label="Cerrar ventana">×</button>
+    </div>
+    <div class="info-panel">
+      <h3 id="info1-title">FESTIVAL INTERNACIONAL DE LAS ARTES SANTA ROSA</h3>
+      <span class="date">15-31 de marzo 2025</span>
+      <p>Festival celebrado en el corazón del Chaco boliviano, reuniendo a destacados artistas internacionales en un espacio colaborativo para ofrecer dos semanas enriquecedoras de aprendizaje colectivo. Durante tres días especiales, se realizan conciertos y presentaciones abiertas a la comunidad, impulsando el desarrollo artístico contemporáneo en jóvenes y niños.</p>
+      <h4>Obras Presentadas:</h4>
+      <ul>
+        <li>SUEÑO CON EL VIENTO - MIZKY BERNARD (BO)</li>
+        <li>ATOK - ALEX RETIF (MX)</li>
+        <li>INTERVENCIÓN TROMPETAS DE CERÁMICA - COMPOSICIÓN GRUPAL</li>
+        <li>CHIRIGUANOS - SANIPAYA, COCHABAMBA (BO)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="info2" role="dialog" aria-modal="true" aria-labelledby="info2-title" hidden>
+  <div class="panel-content">
+    <div class="panel-header">
+      <button class="close-btn" onclick="togglePanel('info2')" aria-label="Cerrar ventana">×</button>
+    </div>
+    <div class="info-panel">
+      <h3 id="info2-title">OEINEFICO</h3>
+      <span class="date">7 de diciembre 2024</span>
+      <p>Conciertos y festival musical creado por la OEIN en colaboración con diversos artistas y agrupaciones, destinado a recaudar fondos para llevar alegría en fiestas navideñas a niños y jóvenes con recursos limitados, que viven en comunidades alejadas de la ciudad.</p>
+      <h4>Obras Presentadas:</h4>
+      <ul>
+        <li>ANATAS TUPICEÑAS - TUPIZA, POTOSÍ (BO)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="info3" role="dialog" aria-modal="true" aria-labelledby="info3-title" hidden>
+  <div class="panel-content">
+    <div class="panel-header">
+      <button class="close-btn" onclick="togglePanel('info3')" aria-label="Cerrar ventana">×</button>
+    </div>
+    <div class="info-panel">
+      <h3 id="info3-title">JORNADAS DE MÚSICA CONTEMPORÁNEA</h3>
+      <span class="date">29 de septiembre 2024</span>
+      <p>Encuentro dedicado a explorar, difundir y promover la música contemporánea en Bolivia, reuniendo a músicos, compositores y artistas nacionales e internacionales para compartir experiencias, talleres, conciertos y espacios de creación colaborativa.</p>
+      <h4>Obras Presentadas:</h4>
+      <ul>
+        <li>MAMAK - CARLOS GUTIÉRREZ (BO)</li>
+        <li>IMPROVISACIÓN CON CAÑAS - IMPROVISACIÓN</li>
+        <li>DIECISIETE - CANELA PALACIOS (BO)</li>
+        <li>JULU JULUS - PROV. INGAVI, LA PAZ (BO)</li>
+        <li>DOBLE LINDE - JOSI CAMACHO (BO)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="info4" role="dialog" aria-modal="true" aria-labelledby="info4-title" hidden>
+  <div class="panel-content">
+    <div class="panel-header">
+      <button class="close-btn" onclick="togglePanel('info4')" aria-label="Cerrar ventana">×</button>
+    </div>
+    <div class="info-panel">
+      <h3 id="info4-title">MÚSICAS DE JALLUPACHA</h3>
+      <span class="date">20 de agosto 2024</span>
+      <p>Durante el evento de la RAE se celebró la riqueza del idioma y las expresiones culturales de nuestra región a través de presentaciones artísticas, recitales de poesía y conversatorios sobre lenguas originarias. En este marco, se inauguró la exposición Músicas de Jallupacha en el Museo Nacional de Etnografía y Folklore (MUSEF) en La Paz, Bolivia, un recorrido sonoro que resalta la herencia musical andina. El evento promovió el diálogo entre artistas, investigadores y la comunidad, reafirmando el compromiso con la preservación de nuestro patrimonio cultural.</p>
+      <h4>Obras Presentadas:</h4>
+      <ul>
+        <li>PINKILLO WAYCHEÑO - PUERTO ACOSTA, LA PAZ (BO)</li>
+        <li>PINKILLO MONTONERO - AMARETE BAUTISTA SAVEDRA, LA PAZ (BO)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="info5" role="dialog" aria-modal="true" aria-labelledby="info5-title" hidden>
+  <div class="panel-content">
+    <div class="panel-header">
+      <button class="close-btn" onclick="togglePanel('info5')" aria-label="Cerrar ventana">×</button>
+    </div>
+    <div class="info-panel">
+      <h3 id="info5-title">SEMINARIO SOBRE LA MÚSICA AUTÓCTONA DE BOLIVIA</h3>
+      <span class="date">30 de agosto 2024</span>
+      <p>El Seminario sobre la Música Autóctona de Bolivia, realizado el 30 de agosto de 2024 en La Paz y organizado por el Sistema de Museos de Bolivia (S.S.M.B.) junto al MUSEF, estuvo dedicado a la exposición "Músicas de Jallupacha". El evento destacó las expresiones musicales andinas asociadas al tiempo de lluvias, presentando instrumentos tradicionales como pinkillus, tarkas y moseños, además de rituales y vestimentas festivas. También se realizaron charlas, talleres y presentaciones musicales, promoviendo el diálogo cultural y reforzando el valor de las tradiciones musicales ancestrales en la cosmovisión andina.</p>
+      <h4>Obras Presentadas:</h4>
+      <ul>
+        <li>JULU JULUS - PROV. INGAVI, LA PAZ (BO)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="info6" role="dialog" aria-modal="true" aria-labelledby="info6-title" hidden>
+  <div class="panel-content">
+    <div class="panel-header">
+      <button class="close-btn" onclick="togglePanel('info6')" aria-label="Cerrar ventana">×</button>
+    </div>
+    <div class="info-panel">
+      <h3 id="info6-title">CONCIERTO CICLO 1</h3>
+      <span class="date">19 de julio 2024</span>
+      <p>Primer ciclo del año 2024 realizado en La Paz, Bolivia, en el Conservatorio Plurinacional de Música. En este evento se reestrenaron varias obras, ampliando el repertorio disponible para más músicos y fomentando la difusión de nuevas propuestas sonoras.</p>
+      <h4>Detalles:</h4>
+      <ul>
+        <li>MAMAK - CARLOS GUTIÉRREZ (BO)</li>
+        <li>DOBLE LINDE - JOSI CAMACHO (BO)</li>
+        <li>VIENTO Y LUNA - MARIEL TERÁN (BO)</li>
+        <li>JULU JULUS - PROV. INGAVI, LA PAZ (BO)</li>
+        <li>SIKURIS - CONIMA, PUNO (PE)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="info7" role="dialog" aria-modal="true" aria-labelledby="info7-title" hidden>
+  <div class="panel-content">
+    <div class="panel-header">
+      <button class="close-btn" onclick="togglePanel('info7')" aria-label="Cerrar ventana">×</button>
+    </div>
+    <div class="info-panel">
+      <h3 id="info7-title">M.S.P</h3>
+      <span class="date">08-09 de mayo 2024</span>
+      <p>En celebración del aniversario de la OEIN, del regreso del Cineclubcito Boliviano y del estreno en Bolivia de 'DE LOS 84 DÍAS' de Philipp Hartmann, una película sobre la música como forma de comunicación en estado de excepción.</p>
+      <h4>Obras Presentadas:</h4>
+      <ul>
+        <li>JULU JULUS - PROV. INGAVI, LA PAZ (BO)</li>
+        <li>SIKUREADAS - LA PAZ (BO)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="info8" role="dialog" aria-modal="true" aria-labelledby="info8-title" hidden>
+  <div class="panel-content">
+    <div class="panel-header">
+      <button class="close-btn" onclick="togglePanel('info8')" aria-label="Cerrar ventana">×</button>
+    </div>
+    <div class="info-panel">
+      <h3 id="info8-title">BIENAL DE VENECIA</h3>
+      <span class="date">14 al 23 de abril 2024</span>
+      <p>La OEIN (Orquesta Experimental de Instrumentos Nativos) participó en la prestigiosa Bienal de Venecia, representando a Bolivia con una propuesta que fusiona la música contemporánea y las sonoridades de los instrumentos tradicionales andinos. Esta participación destacó el valor de las expresiones culturales originarias en un escenario internacional, fortaleciendo el diálogo entre la tradición y la experimentación artística.</p>
+      <h4>Obras Presentadas:</h4>
+      <ul>
+        <li>MAMAK - CARLOS GUTIÉRREZ (BO)</li>
+        <li>DOBLE LINDE - JOSI CAMACHO (BO)</li>
+        <li>VIENTO Y LUNA - MARIEL TERÁN (BO)</li>
+        <li>JULU JULUS - PROV. INGAVI, LA PAZ (BO)</li>
+        <li>WAKA TINTI - (BO)</li>
+        <li>JISKA LAKITAS - LA PAZ (BO)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="info9" role="dialog" aria-modal="true" aria-labelledby="info9-title" hidden>
+  <div class="panel-content">
+    <div class="panel-header">
+      <button class="close-btn" onclick="togglePanel('info9')" aria-label="Cerrar ventana">×</button>
+    </div>
+    <div class="info-panel">
+      <h3 id="info9-title">CONCIERTO 40 ANIVERSARIO</h3>
+      <span class="date">09 de mayo 2020</span>
+      <p>Con motivo de su 40 aniversario, la OEIN (Orquesta Experimental de Instrumentos Nativos) ofreció un concierto especial en Reinsberg, Alemania. La presentación celebró cuatro décadas de innovación sonora y rescate de los instrumentos ancestrales andinos, compartiendo su propuesta única con el público europeo y reafirmando su compromiso con la creación musical contemporánea basada en raíces originarias.</p>
+      <h4>Obras Presentadas:</h4>
+      <ul>
+        <li>MISTI SIKURIS - LA PAZ (BO)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="info10" role="dialog" aria-modal="true" aria-labelledby="info10-title" hidden>
+  <div class="panel-content">
+    <div class="panel-header">
+      <button class="close-btn" onclick="togglePanel('info10')" aria-label="Cerrar ventana">×</button>
+    </div>
+    <div class="info-panel">
+      <h3 id="info10-title">MAERZ MUSIK</h3>
+      <span class="date">10 de marzo al 01 de junio 2020</span>
+      <p>En marzo de 2020, la Orquesta Experimental de Instrumentos Nativos (OEIN) viajó a Berlín para participar en el festival MaerzMusik con el proyecto "Environment", en colaboración con el ensemble PHØNIX16. Sin embargo, la pandemia de COVID-19 provocó la cancelación del festival y dejó a los músicos bolivianos varados en Alemania. Durante más de dos meses, permanecieron en cuarentena en la Academia de Música de Rheinsberg, donde continuaron trabajando en grabaciones, instalaciones sonoras y documentales. Gracias a los esfuerzos conjuntos de PHØNIX16, el Goethe-Institut, el Ministerio de Asuntos Exteriores de Alemania y la Embajada de Bolivia, la OEIN pudo regresar a su país en junio de 2020.</p>
+      <h4>Obras Presentadas:</h4>
+      <ul>
+        <li>Grabaciones, improvisaciones, talleres, música nativa, música contemporánea, estudio de música, análisis de música, composición, escultura entre un gran etcétera</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="info11" role="dialog" aria-modal="true" aria-labelledby="info11-title" hidden>
+  <div class="panel-content">
+    <div class="panel-header">
+      <button class="close-btn" onclick="togglePanel('info11')" aria-label="Cerrar ventana">×</button>
+    </div>
+    <div class="info-panel">
+      <h3 id="info11-title">AMALGAMAS</h3>
+      <span class="date">25 de noviembre 2023</span>
+      <p>El 25 de noviembre de 2023, la Orquesta Experimental de Instrumentos Nativos (OEIN) y la Orquesta Sinfónica Nacional de Bolivia (OSN) presentaron el programa AMALGAMAS en el Centro Sinfónico Nacional de La Paz. Este evento marcó un hito al fusionar instrumentos tradicionales andinos con la orquestación sinfónica, ofreciendo una experiencia sonora única que resaltó la riqueza cultural de Bolivia. El programa incluyó tres estrenos que exploraron nuevas formas de diálogo entre la música ancestral y la contemporánea, reafirmando el compromiso de ambas instituciones con la innovación y la preservación del patrimonio musical del país.</p>
+      <h4>Obras Presentadas:</h4>
+      <ul>
+        <li>TEMPESTAD - MIZKY BERNAL</li>
+        <li>MAMAK - CARLOS GUTIÉRREZ</li>
+        <li>ISPI EN EL HIELO - ANÓNIMO MONROY</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="info12" role="dialog" aria-modal="true" aria-labelledby="info12-title" hidden>
+  <div class="panel-content">
+    <div class="panel-header">
+      <button class="close-btn" onclick="togglePanel('info12')" aria-label="Cerrar ventana">×</button>
+    </div>
+    <div class="info-panel">
+      <h3 id="info12-title">LO SAGRADO</h3>
+      <span class="date">12 al 27 de noviembre 2021</span>
+      <p>El proyecto "Lo Sagrado: Música de los Andes y la Amazonía boliviana" fue una colaboración entre la Orquesta Experimental de Instrumentos Nativos (OEIN) y el Ensamble Moxos, realizada en noviembre de 2021. Este proyecto unió las tradiciones musicales de las tierras altas y bajas de Bolivia, presentando conciertos en El Alto y La Paz los días 12, 13, 26 y 27 de noviembre. La iniciativa fue financiada por el Fondo Suizo de Apoyo a la Cultura y respaldada por la Embajada de Suiza en Bolivia. El objetivo principal fue destacar la riqueza y diversidad del patrimonio musical boliviano, promoviendo el diálogo intercultural y la valorización de las expresiones artísticas ancestrales.</p>
+      <h4>Detalles:</h4>
+      <ul>
+        <li>Colaboración presentada en Beni, La Paz y El Alto</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  <!-- recidencias y colab -->
+  <!-- Paneles de Links redes sociales -->
+  <div class="panel" id="links1" role="dialog" aria-modal="true" aria-labelledby="links1-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('links1')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="links-panel">
+        <h3 id="links1-title">Redes Sociales del artista disponibles.</h3>
+        <div style="margin-top: 2rem;">
+          <a href="https://www.instagram.com/bobholman/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram social-icon"></i>Instagram</a>
+          <a href="https://www.youtube.com/channel/UC-ITD_T7vvH4ZC893ZG_-IA" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube social-icon"></i>YouTube</a>
+          <a href="https://www.youtube.com/@bobholmanpoet" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook social-icon"></i>Facebook</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="links2" role="dialog" aria-modal="true" aria-labelledby="links2-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('links2')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="links-panel">
+        <h3 id="links2-title">Redes Sociales del artista disponibles.</h3>
+        <div style="margin-top: 2rem;">
+          <a href="https://www.instagram.com/renepierreallain/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram social-icon"></i>Instagram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="links3" role="dialog" aria-modal="true" aria-labelledby="links3-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('links3')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="links-panel">
+        <h3 id="links3-title">Redes Sociales del artista disponibles.</h3>
+        <div style="margin-top: 2rem;">
+          <a href="https://www.instagram.com/sonokuwayama.art/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram social-icon"></i>Instagram</a>
+          <a href="https://www.youtube.com/watch?v=JRUjL0f4Ssg" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube social-icon"></i>YouTube</a>
+          <a href="https://www.facebook.com/sono.kuwayama" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook social-icon"></i>Facebook</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="links4" role="dialog" aria-modal="true" aria-labelledby="links4-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('links4')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="links-panel">
+        <h3 id="links4-title">Redes Sociales del artista disponibles.</h3>
+        <div style="margin-top: 2rem;">
+          <a href="https://www.youtube.com/@delfinastella4735" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube social-icon"></i>YouTube</a>
+          <a href="https://www.facebook.com/delfina.stella" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook social-icon"></i>Facebook</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="links5" role="dialog" aria-modal="true" aria-labelledby="links5-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('links5')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="links-panel">
+        <h3 id="links5-title">Redes Sociales del artista disponibles.</h3>
+        <div style="margin-top: 2rem;">
+          <a href="https://www.instagram.com/sinfonica.bolivia/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram social-icon"></i>Instagram</a>
+          <a href="https://www.youtube.com/@SinfonicaBOL" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube social-icon"></i>YouTube</a>
+          <a href="https://www.facebook.com/OSNdeBolivia" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook social-icon"></i>Facebook</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="links6" role="dialog" aria-modal="true" aria-labelledby="links6-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('links6')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="links-panel">
+        <h3 id="links6-title">Redes Sociales del artista disponibles.</h3>
+        <div style="margin-top: 2rem;">
+          <a href="https://www.instagram.com/phonix16_band/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram social-icon"></i>Instagram</a>
+          <a href="https://www.youtube.com/channel/UCelqjptlkm_4ZbJrZVQ8OSA" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube social-icon"></i>YouTube</a>
+          <a href="https://www.facebook.com/ashesandglory" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook social-icon"></i>Facebook</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="links7" role="dialog" aria-modal="true" aria-labelledby="links7-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('links7')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="links-panel">
+        <h3 id="links7-title">Redes Sociales del artista disponibles.</h3>
+        <div style="margin-top: 2rem;">
+          <a href="https://www.youtube.com/channel/UCL2pE0Lx02kQve9rzWX9Evg" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube social-icon"></i>YouTube</a>
+          <a href="https://www.facebook.com/ensamble.moxos.7" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook social-icon"></i>Facebook</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Paneles de Información para Residencias -->
+  <div class="panel" id="residency-info1" role="dialog" aria-modal="true" aria-labelledby="residency-info1-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('residency-info1')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="info-panel">
+        <h3 id="residency-info1-title">Bob Holman - Poeta</h3>
+        <span class="date">29 de marzo 2025</span>
+        <p>El proyecto fue una colaboración artística entre la Orquesta Experimental de Instrumentos Nativos (OEIN) y el poeta estadounidense Bob Holman, desarrollada en el marco del Festival Internacional de las Artes de Santa Rosa de Cuevo, en Bolivia. Durante este encuentro, se crearon nueve piezas innovadoras que fusionaron la poesía y la música, explorando nuevas formas de expresión artística. La colaboración destacó por la conexión instantánea entre los artistas, quienes integraron sus disciplinas para ofrecer una experiencia única al público. Este proyecto ejemplifica el compromiso del festival con la promoción de la diversidad cultural y la experimentación artística en Bolivia.</p>
+        <h4>Obras Presentadas:</h4>
+        <ul>
+          <li>We are the Dinosaur, Tirania, Problema, el rap imposible, poesía colectiva, rocket, B y C, un día en Cuevo, poeta en la jungla.</li>
+          <li>(Estos poemas excepto el colectivo fueron escritos por Bob Holman)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="residency-info2" role="dialog" aria-modal="true" aria-labelledby="residency-info2-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('residency-info2')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="info-panel">
+        <h3 id="residency-info2-title">René Pierre Allain - Artista Plástico</h3>
+        <span class="date">27 de marzo 2025</span>
+        <p>Durante la apertura del Festival Internacional de las Artes de Santa Rosa de Cuevo, en Bolivia, parte de la Orquesta Experimental de Instrumentos Nativos (OEIN) colaboró con el artista visual René Pierre Alain en una intervención artística que integró música, pintura y dibujo. Esta iniciativa se desarrolló en conjunto con niños y jóvenes de la comunidad, quienes participaron activamente en la creación de obras visuales mientras interactuaban con las sonoridades de los instrumentos nativos. La experiencia buscó fomentar la creatividad colectiva y fortalecer los lazos entre el arte contemporáneo y las expresiones culturales locales.</p>
+        <h4>Detalles:</h4>
+        <ul>
+          <li>Intervención sonora con partitura visual</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="residency-info3" role="dialog" aria-modal="true" aria-labelledby="residency-info3-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('residency-info3')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="info-panel">
+        <h3 id="residency-info3-title">Sono Kuwayama - Artista Multidisciplinaria</h3>
+        <span class="date">27 de marzo 2025</span>
+        <p>Durante el Festival Internacional de las Artes de Santa Rosa de Cuevo, celebrado del 27 al 30 de marzo de 2025, la artista visual Sono Kuwayama (EE.UU./Japón) presentó una instalación que exploró el expresionismo de los detalles y la conexión entre materiales naturales y espacio. Miembros de la Orquesta Experimental de Instrumentos Nativos (OEIN) colaboraron en esta obra, aportando una dimensión sonora que dialogó con los elementos visuales, enriqueciendo la experiencia sensorial de los asistentes. La instalación se desarrolló en el marco del festival, que tuvo lugar en la antigua misión de Santa Rosa de Cuevo, en el Chaco boliviano, y fue parte de una serie de actividades que buscaban integrar diversas disciplinas artísticas y fomentar la participación comunitaria.</p>
+        <h4>Detalles:</h4>
+        <ul>
+          <li>Improvisación con instrumentos de viento andinos, sonidos digitales, etc.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="residency-info4" role="dialog" aria-modal="true" aria-labelledby="residency-info4-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('residency-info4')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="info-panel">
+        <h3 id="residency-info4-title">Delfina Stella</h3>
+        <span class="date">27 de Marzo 2025 </span>
+        <p>EDurante el Festival Internacional de las Artes de Santa Rosa de Cuevo 2025, la bailarina y pedagoga italiana Delfina Stella colaboró con la Orquesta Experimental de Instrumentos Nativos (OEIN) en diversas presentaciones que integraron danza contemporánea y música nativa. Estas actividades, desarrolladas en conjunto con la comunidad local, ofrecieron talleres y espectáculos que involucraron a niños, jóvenes y adultos, promoviendo la creatividad colectiva y el diálogo intercultural. La participación de Stella y la OEIN en el festival evidenció la capacidad del arte para conectar diferentes tradiciones y fomentar la expresión artística comunitaria.</p>
+        <h4>Detalles:</h4>
+        <ul>
+          <li>Presentacion de danza contemporanea dirijida musicalmente con instrumentos del altiplano boliviano.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="residency-info5" role="dialog" aria-modal="true" aria-labelledby="residency-info5-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('residency-info5')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="info-panel">
+        <h3 id="residency-info5-title">Orquesta Sinfónica Nacional</h3>
+        <span class="date">2023</span>
+        <p>La colaboración entre la Orquesta Sinfónica Nacional de Bolivia (OSN) y la Orquesta Experimental de Instrumentos Nativos (OEIN) marcó un hito en la escena musical del país. El proyecto conjunto "AMALGAMAS", presentado el 25 de noviembre de 2023 en La Paz, fusionó la tradición sinfónica con instrumentos nativos andinos, ampliando el repertorio de la OSN y fomentando nuevas colaboraciones con artistas fuera de su zona de confort. Este acercamiento fortaleció los lazos de escucha, ayuda y entendimiento entre músicos de diferentes tradiciones, promoviendo un diálogo enriquecedor que trasciende las fronteras estilísticas y culturales.</p>
+        <h4>Detalles:</h4>
+        <ul>
+          <li>Se tocaron piezas de compositores bolivianos, músicos de la OEIN (música tradicional) junto con músicos de la OSN (música clásica) a la dirección de Weimar Arancibia.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="residency-info6" role="dialog" aria-modal="true" aria-labelledby="residency-info6-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('residency-info6')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="info-panel">
+        <h3 id="residency-info6-title">PHØNIX16</h3>
+        <span class="date">2020</span>
+        <p>En marzo de 2020, la Orquesta Experimental de Instrumentos Nativos (OEIN) viajó a Alemania para colaborar con el ensamble vocal PHØNIX16 en el festival MaerzMusik. La pandemia de COVID-19 provocó la cancelación del evento y dejó a los músicos varados en la Academia de Música de Rheinsberg durante 84 días. Durante este período, desarrollaron el proyecto "Environment", una obra que combina voces, instrumentos indígenas, piano preparado, percusión y video, reflejando sus vivencias compartidas. La experiencia también fue documentada en el filme "Aus den 84 Tagen" de Philipp Hartmann, destacando la resiliencia y creatividad de los músicos en tiempos de crisis.</p>
+        <h4>Detalles:</h4>
+        <ul>
+          <li>Expresiones musicales de muchos tipos.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="residency-info7" role="dialog" aria-modal="true" aria-labelledby="residency-info7-title" hidden>
+    <div class="panel-content">
+      <div class="panel-header">
+        <button class="close-btn" onclick="togglePanel('residency-info7')" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="info-panel">
+        <h3 id="residency-info7-title">Ensamble Moxos</h3>
+        <span class="date">2021</span>
+        <p>La colaboración entre la Orquesta Experimental de Instrumentos Nativos (OEIN) y el Ensamble Moxos representó un punto de inflexión en la música boliviana al unir las tradiciones sonoras de los Andes y la Amazonía. Este acercamiento, materializado en el proyecto "Lo Sagrado: música de los Andes y de la Amazonía boliviana", permitió explorar nuevas formas de expresión musical que integran las culturas de las tierras altas y bajas del país. La iniciativa no solo fortaleció los lazos culturales entre diferentes regiones, sino que también promovió un diálogo artístico enriquecedor que resalta la diversidad y riqueza del patrimonio musical boliviano.</p>
+        <h4>Detalles:</h4>
+        <ul>
+          <li>Colaboración presentada en Beni, La Paz y El Alto.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    
+    // Polyfill para scroll suave en Safari
+    if (!('scrollBehavior' in document.documentElement.style)) {
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js';
+      script.onload = () => console.log('Smoothscroll polyfill cargado');
+      script.onerror = (err) => console.error('Error al cargar smoothscroll polyfill:', err);
+      document.head.appendChild(script);
+    }
+
+    // Pasarela Visual - Acordeones Mejorados (versión simplificada)
+    document.querySelectorAll('.pasarela-header').forEach(header => {
+      // Manejo de eventos táctiles y de teclado
+      header.addEventListener('click', togglePasarela);
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          togglePasarela(e);
+        }
+      });
+    });
+
+    function togglePasarela(e) {
+      const pasarelaItem = e.currentTarget.parentElement;
+      const isActive = pasarelaItem.classList.contains('active');
+      const contentId = pasarelaItem.id + '-content';
+      const content = document.getElementById(contentId);
+      
+      // Actualizar atributos ARIA
+      e.currentTarget.setAttribute('aria-expanded', !isActive);
+      if (content) {
+        content.setAttribute('aria-hidden', isActive);
+      }
+      
+      // Cerrar todos primero si no está activo
+      if (!isActive) {
+        document.querySelectorAll('.pasarela-item').forEach(item => {
+          if (item !== pasarelaItem) {
+            item.classList.remove('active');
+            const header = item.querySelector('.pasarela-header');
+            if (header) header.setAttribute('aria-expanded', 'false');
+            const itemContent = document.getElementById(item.id + '-content');
+            if (itemContent) itemContent.setAttribute('aria-hidden', 'true');
+          }
+        });
+      }
+      
+      // Alternar estado del elemento clickeado
+      pasarelaItem.classList.toggle('active');
+      e.currentTarget.setAttribute('aria-expanded', pasarelaItem.classList.contains('active'));
+      if (content) content.setAttribute('aria-hidden', !pasarelaItem.classList.contains('active'));
+      
+      // Desplazamiento suave solo si se está abriendo
+      if (!isActive) {
+        setTimeout(() => {
+          pasarelaItem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+
+    // Botones del hero
+    document.querySelectorAll('.btn[data-target]').forEach(btn => {
+      btn.addEventListener('click', scrollToSection);
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          scrollToSection(e);
+        }
+      });
+    });
+
+    function scrollToSection(e) {
+      const targetId = e.currentTarget.getAttribute('data-target');
+      const targetItem = document.getElementById(targetId);
+      
+      if (targetItem) {
+        // Cerrar todos los items excepto el objetivo
+        document.querySelectorAll('.pasarela-item').forEach(item => {
+          if (item.id !== targetId) {
+            item.classList.remove('active');
+            const header = item.querySelector('.pasarela-header');
+            if (header) header.setAttribute('aria-expanded', 'false');
+            const content = document.getElementById(item.id + '-content');
+            if (content) content.setAttribute('aria-hidden', 'true');
+          }
+        });
+        
+        // Abrir el item objetivo
+        targetItem.classList.add('active');
+        const header = targetItem.querySelector('.pasarela-header');
+        if (header) header.setAttribute('aria-expanded', 'true');
+        const content = document.getElementById(targetItem.id + '-content');
+        if (content) content.setAttribute('aria-hidden', 'false');
+        
+        // Desplazamiento suave
+        setTimeout(() => {
+          targetItem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+
+    // Función mejorada para voltear las tarjetas de grabación
+    function flipCard(card) {
+      // Detener cualquier video que esté reproduciéndose
+      const videos = document.querySelectorAll('iframe');
+      videos.forEach(video => {
+        if (video.contentWindow) {
+          video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        }
+      });
+      
+      // Limpiar cualquier timeout existente
+      if (card.dataset.flipTimeout) {
+        clearTimeout(card.dataset.flipTimeout);
+        delete card.dataset.flipTimeout;
+      }
+      
+      // Voltear la tarjeta clickeada
+      card.classList.toggle('flipped');
+      
+      // Forzar un reflow para reiniciar la animación
+      void card.offsetWidth;
+    }
+    
+    // Manejo de eventos táctiles para tarjetas
+    document.querySelectorAll('.recording-card').forEach(card => {
+      card.addEventListener('touchstart', handleTouchStart, { passive: true });
+      card.addEventListener('touchend', handleTouchEnd, { passive: true });
+    });
+    
+    let touchStartTime;
+    function handleTouchStart() {
+      touchStartTime = new Date().getTime();
+    }
+    
+    function handleTouchEnd(e) {
+      const touchEndTime = new Date().getTime();
+      const touchDuration = touchEndTime - touchStartTime;
+      
+      // Solo considerar como clic si el toque fue breve
+      if (touchDuration < 300) {
+        flipCard(e.currentTarget);
+      }
+    }
+    
+    // Mejorar el hover para las tarjetas de grabación
+    document.querySelectorAll('.recording-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        document.querySelectorAll('.recording-card').forEach(c => {
+          if (c !== card) {
+            c.querySelector('img').style.filter = 'grayscale(100%) brightness(0.7)';
+          }
+        });
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        document.querySelectorAll('.recording-card').forEach(c => {
+          c.querySelector('img').style.filter = '';
+        });
+      });
+    });
+
+    // Función para paneles modales
+    function togglePanel(id) {
+      const panel = document.getElementById(id);
+      const isActive = panel.classList.contains('active');
+      
+      // Detener cualquier video que esté reproduciéndose al cerrar
+      if (isActive) {
+        const videos = panel.querySelectorAll('iframe');
+        videos.forEach(video => {
+          if (video.contentWindow) {
+            video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+          }
+        });
+      }
+      
+      // Cerrar todos los paneles primero
+      document.querySelectorAll('.panel').forEach(p => {
+        p.classList.remove('active');
+        p.setAttribute('hidden', 'true');
+        document.body.style.overflow = '';
+      });
+      
+      // Abrir este panel si no estaba activo
+      if (!isActive) {
+        panel.classList.add('active');
+        panel.removeAttribute('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+      
+      // Enfocar el botón de cerrar para accesibilidad
+      if (panel.querySelector('.close-btn')) {
+        setTimeout(() => {
+          panel.querySelector('.close-btn').focus();
+        }, 100);
+      }
+    }
+
+    // Cerrar al hacer clic fuera o con ESC
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('panel')) {
+        document.querySelectorAll('.panel').forEach(panel => {
+          panel.classList.remove('active');
+          panel.setAttribute('hidden', 'true');
+          document.body.style.overflow = '';
+        });
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.panel').forEach(panel => {
+          panel.classList.remove('active');
+          panel.setAttribute('hidden', 'true');
+          document.body.style.overflow = '';
+        });
+      }
+    });
+
+    // Función para descargar el portafolio
+    function downloadPortfolio() {
+      // Crear un enlace temporal
+      const link = document.createElement('a');
+      link.href = 'assets/portafolio-oein.pdf'; // Reemplazar con la ruta real del PDF
+      link.download = 'Portafolio-OEIN.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Mostrar mensaje si el archivo no existe (para desarrollo)
+      console.log('Descargando portafolio... Reemplaza la ruta con tu archivo PDF real.');
+    }
+
+    // Correcciones específicas para iOS
+    document.addEventListener('DOMContentLoaded', function() {
+      // Asegurar que las imágenes se carguen correctamente en iOS
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        images.forEach(img => {
+          img.loading = 'eager';
+        });
+      }
+    });
+    
+  </script>
+</body>
+</html>
